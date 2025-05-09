@@ -1,0 +1,56 @@
+artifacts_root: artifacts
+
+
+
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_URL: https://github.com/trekpy/dummy/raw/main/winequality-data.zip
+  
+
+  #for this above link to generate first go to github create any dummy 
+  #repo and then add this zip file and commit change and then just copy the link from linkbar and for
+  # future if u change the path just upload the link here no need to make chnages everywhere.
+  local_data_file: artifacts/data_ingestion/data.zip
+  unzip_dir: artifacts/data_ingestion
+
+
+
+data_validation:
+  root_dir: artifacts/data_validation
+  unzip_data_dir: artifacts/data_ingestion/winequality-red.csv
+  STATUS_FILE: artifacts/data_validation/status.txt
+
+
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_path: artifacts/data_ingestion/winequality-red.csv
+
+
+
+model_trainer:
+  root_dir: artifacts/model_trainer
+  train_data_path: artifacts/data_transformation/train.csv
+  test_data_path: artifacts/data_transformation/test.csv
+  model_name: model.joblib
+
+
+
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  test_data_path: artifacts/data_transformation/test.csv
+  model_path: artifacts/model_trainer/model.joblib
+  metric_file_name: artifacts/model_evaluation/metrics.json
+
+
+
+
+
+
+# This YAML file stores all paths needed for your ML project:
+# data_ingestion ➔ Download and unzip data.
+# data_validation ➔ Check if data is correct.
+# data_transformation ➔ Split data for training/testing.
+# model_trainer ➔ Train and save the model.
+# model_evaluation ➔ Test model and save results.

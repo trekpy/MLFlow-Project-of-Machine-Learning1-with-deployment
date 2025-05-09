@@ -1,7 +1,7 @@
 import os
 from box.exceptions import BoxValueError
 import yaml
-from mlProject import logger
+from src.mlProject.utils import logger
 import json
 import joblib
 from ensure import ensure_annotations
@@ -74,7 +74,7 @@ def load_json(path: Path) -> ConfigBox:
     Args:
         path (Path): path to json file
 
-    Returns: 
+    Returns:
         ConfigBox: data as class attributes instead of dict
     """
     with open(path) as f:
@@ -124,8 +124,6 @@ def get_size(path: Path) -> str:
     """
     size_in_kb = round(os.path.getsize(path)/1024)
     return f"~ {size_in_kb} KB"
-
-
 
 
 
